@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوِّق تطبيقك - بوابة الدفع</title>
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f4f4f9; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
+        button { background-color: #6200ee; color: white; border: none; padding: 15px 30px; border-radius: 25px; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #3700b3; }
+        .loader { display: none; margin-top: 20px; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>تطبيق "سوِّق تطبيقك"</h2>
+    <p>لإتمام عملية التحليل الاقتصادي وتسويق مشروعك، يرجى دفع:</p>
+    <h1 style="color: #8a2be2;">20 π</h1>
+    <button id="pay-button" onclick="transferPi()">ادفع الآن بواسطة Pi</button>
+    <div id="status" class="loader">جاري الاتصال بمحفظتك...</div>
+</div>
+
+<script>
+    // 1. تهيئة تطبيق باي
+    const Pi = window.Pi;
+    Pi.init({ version: "1.5" });
+
+    async function transferPi() {
+        const button = document.getElementById('pay-button');
+        const status = document.getElementById('status');
+        
+        button.style.display = 'none';
+        status.style.display = 'block';
+
+        try {
+            const payment = await Pi.createPayment({
+                amount: 20,
+                memo: "رسوم تحليل وتسويق تطبيق في حاضنة الأعمال",
+                metadata: { appId: "marketing_hub_01" },
+            }, {
+                onReadyForServerApproval: function(paymentId) {
+                    console.log("الدفع جاهز للموافقة: ", paymentId);
+                    // هنا يتم إرسال الطلب للسيرفر (اختياري في المرحلة الحالية)
+                },
+                onReadyForServerCompletion: function(paymentId, txid) {
+                    console.log("تم الدفع بنجاح!");
+                    // 2. العودة لتطبيق جلايد فوراً بعد النجاح
+                    window.location.href = "رابط_تطبيق_جلايد_الخاص_بك";
+                },
+                onCancel: function(paymentId) { 
+                    alert("تم إلغاء العملية");
+                    button.style.display = 'block';
+                    status.style.display = 'none';
+                },
+                onError: function(error, payment) { 
+                    alert("حدث خطأ في الربط: " + error.message);
+                    button.style.display = 'block';
+                    status.style.display = 'none';
+                },
+            });
+        } catch (err) {
+            alert("فشل بدء الدفع: " + err.message);
+        }
+    }
+</script>
+
+</body>
+</html>
