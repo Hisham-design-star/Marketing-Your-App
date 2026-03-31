@@ -3,162 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوِّق تطبيقك | Pi Network</title>
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <title>حاضنة سوِّق تطبيقك | استثمار باي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #ffac00;
-            --dark-gray: #121212;
+            --dark: #0d0d0d;
             --glass: rgba(255, 255, 255, 0.05);
+            --success: #4caf50;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--dark-gray);
+            background-color: var(--dark);
             color: #ffffff;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
         }
 
         .app-container {
             width: 90%;
-            max-width: 400px;
-            background: linear-gradient(145deg, #1e1e1e, #0f0f0f);
-            border-radius: 30px;
-            padding: 35px 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255, 172, 0, 0.1);
+            max-width: 420px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border-radius: 35px;
+            padding: 40px 25px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 172, 0, 0.15);
             text-align: center;
         }
 
-        .header-icon { font-size: 50px; margin-bottom: 10px; filter: drop-shadow(0 0 10px var(--gold)); }
-        h1 { font-size: 24px; color: var(--gold); margin-bottom: 5px; }
-        .tagline { color: #888; font-size: 13px; margin-bottom: 25px; }
+        .header-icon { font-size: 60px; margin-bottom: 20px; filter: drop-shadow(0 0 15px var(--gold)); }
+        h1 { font-size: 26px; color: var(--gold); margin: 0; }
+        .tagline { color: #888; font-size: 14px; margin-bottom: 35px; line-height: 1.6; }
 
-        .feature-box {
+        .feature-item {
             background: var(--glass);
             padding: 15px;
-            border-radius: 15px;
+            border-radius: 18px;
             margin-bottom: 12px;
             border-right: 4px solid var(--gold);
             text-align: right;
         }
-
-        .feature-box strong { display: block; color: var(--gold); font-size: 14px; }
-        .feature-box span { font-size: 12px; color: #ccc; }
+        .feature-item strong { display: block; color: var(--gold); font-size: 15px; }
+        .feature-item span { font-size: 12px; color: #bbb; }
 
         .btn-main {
-            background: linear-gradient(90deg, #ffac00, #f29300);
+            background: linear-gradient(90deg, var(--gold), #f29300);
             color: #000;
             border: none;
-            padding: 16px;
-            border-radius: 15px;
+            padding: 18px;
+            border-radius: 18px;
             width: 100%;
-            font-size: 17px;
+            font-size: 19px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 172, 0, 0.2);
-            margin-top: 10px;
+            box-shadow: 0 10px 25px rgba(255, 172, 0, 0.25);
+            margin-top: 15px;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-outline {
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 13px;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #fff;
-            display: flex;
-            align-items: center;
+        /* نافذة الدفع الذكية */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
             justify-content: center;
-            background: rgba(255,255,255,0.03);
+            align-items: center;
+            z-index: 9999;
+        }
+        .modal-content {
+            background: #1e1e1e;
+            width: 85%;
+            max-width: 360px;
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid var(--gold);
+            text-align: center;
+            position: relative;
+        }
+        
+        .wallet-address {
+            background: #000;
+            padding: 15px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--success);
+            word-break: break-all;
+            margin: 20px 0;
+            border: 1px dashed var(--success);
         }
 
-        #status-msg { margin-top: 15px; font-size: 12px; color: #ffeb3b; min-height: 18px; }
+        .btn-copy {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-whatsapp {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: block;
+            font-size: 13px;
+        }
+
+        .close-btn { position: absolute; top: 15px; left: 15px; color: #ff4444; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <div class="header-icon">🛡️</div>
+    <div class="header-icon">💎</div>
     <h1>سوِّق تطبيقك</h1>
-    <p class="tagline">بوابتك الآمنة لتحليل ونمو مشاريع Pi Network</p>
+    <p class="tagline">نصيغُ رؤيتك البرمجية ببيانٍ اقتصاديٍّ رصين، ونمهدُ لك الطريق نحو كبار المستثمرين.</p>
 
-    <div class="feature-box">
-        <strong>التحليل الفني المعمق</strong>
-        <span>دراسة جدوى متكاملة لمشروعك البرمجي.</span>
+    <div class="features">
+        <div class="feature-item">
+            <strong>تحليل الاستدامة</strong>
+            <span>دراسة معمقة لقابلية مشروعك للنمو في نظام باي.</span>
+        </div>
+        <div class="feature-item">
+            <strong>التسويق الاحترافي</strong>
+            <span>تحويل أفكارك إلى لغة استثمارية تجذب الدعم المالي.</span>
+        </div>
     </div>
-    <div class="feature-box">
-        <strong>جذب المستثمرين</strong>
-        <span>تحويل الكود إلى فرصة استثمارية حقيقية.</span>
+
+    <button class="btn-main" onclick="openPayment()">ابدأ التحليل بـ 20 π</button>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 25px;">
+        <a href="https://wa.me/201013789005" target="_blank" class="btn-whatsapp">واتساب 💬</a>
+        <a href="https://t.me/201013789005" target="_blank" class="btn-whatsapp">تليجرام ✈️</a>
     </div>
+</div>
 
-    <button id="pay-button" class="btn-main" onclick="handlePiPayment()">ابدأ التحليل بـ 20 π</button>
-    <div id="status-msg">جاهز لبدء العملية..</div>
-
-    <div class="contact-grid">
-        <a href="https://wa.me/201013789005" target="_blank" rel="noopener noreferrer" class="btn-outline">واتساب 💬</a>
-        <a href="https://t.me/201013789005" target="_blank" rel="noopener noreferrer" class="btn-outline">تليجرام ✈️</a>
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePayment()">✕</span>
+        <h2 style="color: var(--gold); margin-top: 0;">بوابة الاستثمار</h2>
+        <p style="font-size: 12px; color: #ccc;">لإتمام طلب التحليل، يرجى تحويل 20 π يدوياً إلى عنوان الحاضنة الرسمي أدناه:</p>
+        
+        <div class="wallet-address" id="wallet-id">GAQS5F3QZQXDJATSI4NU36I2KMBKVAF7T32DN7M3RGAYWWUW5Q2ANF3E</div>
+        
+        <button class="btn-copy" onclick="copyWallet()">نسخ العنوان 📋</button>
+        <a id="wa-link" href="https://wa.me/201013789005?text=لقد تم تحويل 20 باي، أريد البدء في تحليل مشروعي" target="_blank" class="btn-whatsapp" style="border-color: var(--gold); color: var(--gold);">تأكيد الدفع عبر واتساب ✅</a>
     </div>
 </div>
 
 <script>
-    // تهيئة SDK باي
-    const Pi = window.Pi;
-    Pi.init({ version: "2.0" });
+    function openPayment() { document.getElementById('paymentModal').style.display = 'flex'; }
+    function closePayment() { document.getElementById('paymentModal').style.display = 'none'; }
 
-    async function handlePiPayment() {
-        const status = document.getElementById('status-msg');
-        
-        try {
-            status.innerText = "جاري المصادقة مع الشبكة...";
-            
-            // 1. طلب الصلاحيات (لحل مشكلة Scope التي ظهرت في صورتك)
-            const scopes = ['payments'];
-            await Pi.authenticate(scopes, (payment) => {
-                console.log("Incomplete payment found:", payment);
-            });
+    function copyWallet() {
+        const walletText = document.getElementById('wallet-id').innerText;
+        navigator.clipboard.writeText(walletText).then(() => {
+            alert("تم نسخ العنوان! انتقل لمحفظة Pi للتحويل ثم عد لتأكيد الدفع.");
+        }).catch(() => {
+            alert("يرجى نسخ العنوان يدوياً.");
+        });
+    }
 
-            status.innerText = "جاري فتح المحفظة لتأكيد الدفع...";
-
-            // 2. إنشاء عملية الدفع
-            const payment = await Pi.createPayment({
-                amount: 20,
-                memo: "رسوم تحليل مشروع - سوِّق تطبيقك",
-                metadata: { project: "Technical_Incubator" },
-            }, {
-                onReadyForServerApproval: (paymentId) => {
-                    status.innerText = "بانتظار موافقة الشبكة النهائية..";
-                },
-                onReadyForServerCompletion: (paymentId, txid) => {
-                    status.style.color = "#4caf50";
-                    status.innerText = "تم الدفع بنجاح! تواصل معنا عبر واتساب الآن.";
-                    alert("عملية ناجحة! رقم المعاملة: " + txid);
-                },
-                onCancel: (paymentId) => {
-                    status.innerText = "تم إلغاء العملية من قبلك.";
-                },
-                onError: (error, payment) => {
-                    status.innerText = "خطأ: " + error.message;
-                },
-            });
-
-        } catch (err) {
-            status.innerText = "فشل: تأكد من استخدام Pi Browser";
-            console.error(err);
-        }
+    // إغلاق النافذة عند الضغط خارجها
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('paymentModal')) { closePayment(); }
     }
 </script>
 
