@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاضنة سوِّق تطبيقك | Pi Network</title>
+    <title>حاضنة سوِّق تطبيقك | الفن التقني</title>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #ffac00;
-            --deep-purple: #2d004d;
             --dark-gray: #121212;
             --glass: rgba(255, 255, 255, 0.05);
         }
@@ -23,108 +22,107 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* حاوية الفخامة التقنية */
         .app-container {
             width: 90%;
-            max-width: 450px;
-            background: linear-gradient(145deg, #1e1e1e, #121212);
-            border-radius: 30px;
+            max-width: 420px;
+            background: linear-gradient(145deg, #1e1e1e, #0f0f0f);
+            border-radius: 35px;
             padding: 40px 25px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255, 172, 0, 0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            border: 1px solid rgba(255, 172, 0, 0.15);
             text-align: center;
+            position: relative;
         }
 
         .header-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px var(--gold));
+            font-size: 55px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px var(--gold));
         }
 
-        h1 { font-size: 24px; color: var(--gold); margin-bottom: 10px; }
-        p.tagline { color: #aaa; font-size: 14px; margin-bottom: 30px; }
+        h1 { font-size: 26px; color: var(--gold); margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        p.tagline { color: #888; font-size: 14px; margin-bottom: 35px; line-height: 1.6; }
 
-        /* مميزات الحاضنة */
-        .features {
-            text-align: right;
-            margin-bottom: 35px;
-        }
         .feature-box {
             background: var(--glass);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 12px;
-            border-right: 4px solid var(--gold);
+            padding: 18px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            border-right: 5px solid var(--gold);
+            text-align: right;
+            transition: 0.3s;
         }
-        .feature-box strong { display: block; color: var(--gold); }
-        .feature-box span { font-size: 13px; color: #ccc; }
 
-        /* أزرار العمليات */
+        .feature-box strong { display: block; color: var(--gold); font-size: 15px; }
+        .feature-box span { font-size: 12px; color: #bbb; }
+
         .btn-main {
-            background: linear-gradient(90deg, #ffac00, #ff8000);
+            background: linear-gradient(90deg, #ffac00, #f29300);
             color: #000;
             border: none;
             padding: 18px;
-            border-radius: 15px;
+            border-radius: 18px;
             width: 100%;
-            font-size: 18px;
+            font-size: 19px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 172, 0, 0.3);
-            transition: 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 10px 25px rgba(255, 172, 0, 0.25);
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .btn-outline {
             text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 14px;
+            border-radius: 15px;
             font-size: 14px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #eee;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: 0.3s;
+            background: rgba(255,255,255,0.02);
         }
-        .btn-outline:hover { background: var(--glass); border-color: var(--gold); }
 
-        #status-msg { margin-top: 15px; font-size: 13px; color: #ffeb3b; min-height: 20px; }
+        .btn-outline:hover { background: var(--glass); border-color: var(--gold); color: var(--gold); }
+
+        #status-msg { margin-top: 20px; font-size: 13px; color: #ffca28; font-weight: bold; min-height: 20px; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <div class="header-icon">🛡️</div>
+    <div class="header-icon">💎</div>
     <h1>سوِّق تطبيقك</h1>
-    <p class="tagline">بوابتك الآمنة لتحليل ونجاح مشاريع Pi Network</p>
+    <p class="tagline">نصيغُ رؤيتك البرمجية ببيانٍ اقتصاديٍّ رصين، ونمهدُ لك الطريق نحو كبار المستثمرين.</p>
 
     <div class="features">
         <div class="feature-box">
-            <strong>التحليل الاقتصادي العميق</strong>
-            <span>دراسة جدوى تقنية تضمن استدامة مشروعك.</span>
+            <strong>تفنيد الجدوى</strong>
+            <span>تحليل دقيق لأداء التطبيق وقابليته للنمو العالمي.</span>
         </div>
         <div class="feature-box">
-            <strong>التسويق للمستثمرين</strong>
-            <span>نحول فكرتك البرمجية إلى لغة استثمارية جذابة.</span>
+            <strong>الربط الاستثماري</strong>
+            <span>تجهيز ملفك الفني ليكون لائقاً بمحفظة كبار الداعمين.</span>
         </div>
     </div>
 
-    <button id="pay-button" class="btn-main" onclick="transferPi()">ابدأ التحليل بـ 20 π</button>
-    <div id="status-msg">جاهز لبدء العملية..</div>
+    <button id="pay-button" class="btn-main" onclick="startProcess()">ابدأ التحليل بـ 20 π</button>
+    <div id="status-msg">بانتظار الإشارة البرمجية..</div>
 
     <div class="contact-grid">
-        <a href="https://wa.me/201013789005" class="btn-outline">واتساب 💬</a>
-        <a href="https://t.me/201013789005" class="btn-outline">تليجرام ✈️</a>
+        <a href="https://wa.me/201013789005" target="_blank" rel="noopener" class="btn-outline">واتساب 💬</a>
+        <a href="https://t.me/201013789005" target="_blank" rel="noopener" class="btn-outline" style="border-color: #0088cc55;">تليجرام ✈️</a>
     </div>
 </div>
 
@@ -132,30 +130,51 @@
     const Pi = window.Pi;
     Pi.init({ version: "2.0" });
 
-    async function transferPi() {
+    // الوظيفة الرئيسية الذكية
+    async function startProcess() {
         const status = document.getElementById('status-msg');
-        status.innerText = "جاري فتح المحفظة لتأكيد الدفع...";
-
+        
         try {
+            status.innerText = "جاري المصادقة مع شبكة باي...";
+            
+            // 1. طلب المصادقة والصلاحيات (لحل مشكلة Scope)
+            const scopes = ['payments'];
+            const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+            
+            status.innerText = "تمت المصادقة. جاري تحضير المحفظة...";
+
+            // 2. طلب الدفع
             const payment = await Pi.createPayment({
                 amount: 20,
-                memo: "رسوم تحليل مشروع تقني - حاضنة سوِّق تطبيقك",
-                metadata: { type: "investment_analysis" },
+                memo: "تحليل وتسويق مشروع تقني - سوِّق تطبيقك",
+                metadata: { category: "incubation_service" },
             }, {
                 onReadyForServerApproval: (paymentId) => {
-                    status.innerText = "بانتظار الموافقة النهائية من الشبكة..";
+                    status.innerText = "تأكيد الدفع من السيرفر..";
                 },
                 onReadyForServerCompletion: (paymentId, txid) => {
                     status.style.color = "#4caf50";
-                    status.innerText = "تمت العملية بنجاح! تواصل معنا الآن لإرسال بياناتك.";
-                    alert("تم الدفع بنجاح! رقم المعاملة: " + txid);
+                    status.innerText = "تم الدفع بنجاح! تواصل معي عبر الواتساب لإرسال مشروعك.";
+                    alert("نجحت العملية! رقم المعاملة: " + txid);
                 },
-                onCancel: (paymentId) => { status.innerText = "تم إلغاء عملية الدفع."; },
-                onError: (error, payment) => { status.innerText = "خطأ: " + error.message; },
+                onCancel: (paymentId) => {
+                    status.innerText = "تم إلغاء عملية الدفع.";
+                },
+                onError: (error, payment) => {
+                    status.innerText = "خطأ: تأكد من تشغيل التطبيق داخل Pi Browser.";
+                    console.error(error);
+                },
             });
+
         } catch (err) {
-            status.innerText = "فشل الربط: " + err.message;
+            status.innerText = "عذراً، يجب استخدام متصفح Pi Browser الرسمي.";
+            console.error(err);
         }
+    }
+
+    // التعامل مع المدفوعات التي لم تكتمل
+    function onIncompletePaymentFound(payment) {
+        console.log("هناك دفعة معلقة:", payment.identifier);
     }
 </script>
 
